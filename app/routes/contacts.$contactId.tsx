@@ -2,9 +2,10 @@ import { Form, useLoaderData } from "@remix-run/react";
 import type { FunctionComponent } from "react";
 
 import { ContactRecord, getContact } from "../data";
-import { json } from "@remix-run/node";
+import { json, LoaderFunctionArgs } from "@remix-run/node";
 
-export const loader = async ({ params }) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+
   const contact = await getContact(params.contactId);
   return json({ contact });
 };
